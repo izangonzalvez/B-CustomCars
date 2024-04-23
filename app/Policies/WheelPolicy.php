@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 
-class SideskirtsPolicy
+class WheelPolicy
 {
     /**
      * Create a new policy instance.
