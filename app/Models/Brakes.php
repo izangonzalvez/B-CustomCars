@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Suspension extends Model
+class Brakes extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'size',
         'price',
-        'type',
-    ]; 
+        'tablet',
+    ];
 
     public function user()
     {

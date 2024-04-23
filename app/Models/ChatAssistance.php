@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Suspension extends Model
+class ChatAssistance extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'price',
-        'type',
-    ]; 
+        'message',
+        'response',
+        'user_id',
+    ];
 
     public function user()
     {
