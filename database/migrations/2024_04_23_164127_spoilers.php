@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('suspension', function (Blueprint $table) {
+        Schema::create('spoilers', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->integer('price');
-            $table->string('type', 255);
+            $table->string('type',255);
+            $table->float('price', 8,2);
+            $table->string('size',255);
+            $table->string('material',255);
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('suspension');
+        Schema::dropIfExists('spoilers');
     }
 };
