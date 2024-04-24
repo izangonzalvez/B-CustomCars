@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             WheelSeeder::class,
+            SuspensionSeeder::class,
+            SpoilerSeeder::class,
+            SideskirtSeeder::class,
+
         ]);
     }
 }
