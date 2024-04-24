@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Exhaustpipe;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,7 +25,10 @@ class DatabaseSeeder extends Seeder
             SuspensionSeeder::class,
             SpoilerSeeder::class,
             SideskirtSeeder::class,
-
+            BrakeSeeder::class,
+            EngineSeeder::class,
+            ExhaustpipeSeeder::class,
+            LightSeeder::class,
         ]);
     }
 }

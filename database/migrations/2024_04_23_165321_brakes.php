@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('brakes', function (Blueprint $table) {
             $table->id();
-            $table->string('size',255);
+            $table->string('name', 255);
+            $table->string('style',255);
+            $table->string('model',255);
             $table->float('price', 8, 2);
-            $table->string('tablet',255);
             $table->timestamps();
         });
     }

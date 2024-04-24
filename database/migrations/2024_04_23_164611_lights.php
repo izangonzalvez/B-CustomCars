@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('lights', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 255);
             $table->string('type',255);
             $table->float('price', 8, 2);
             $table->string('color',255);
