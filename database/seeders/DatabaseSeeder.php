@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Exhaustpipe;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +20,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
+            UserSeeder::class,
             WheelSeeder::class,
             SuspensionSeeder::class,
             SpoilerSeeder::class,
@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
             EngineSeeder::class,
             ExhaustpipeSeeder::class,
             LightSeeder::class,
+            ChatAssistanceSeeder::class,
+
         ]);
     }
 }
