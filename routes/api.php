@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\BrakesController;
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\EnginesController;
+use App\Http\Controllers\ExhaustPipesController;
 use App\Http\Controllers\WheelsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WheelsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,9 @@ use App\Http\Controllers\WheelsController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-<<<<<<< HEAD
 
 // Route::apiResource('cars', CarsController::class);
-=======
 Route::apiResource('wheels', WheelsController::class);
->>>>>>> 752a52b0248bdfa12292bc3a7dccc2dce97c07e3
+Route::apiResource('brakes', BrakesController::class);
+Route::apiResource('engines', EnginesController::class);
+Route::apiResource('exhaustpipes', ExhaustPipesController::class);
