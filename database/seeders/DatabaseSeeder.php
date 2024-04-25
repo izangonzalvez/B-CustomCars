@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
             EngineSeeder::class,
             ExhaustpipeSeeder::class,
             LightSeeder::class,
+            // CarSeeder::class,
+            // UserSeeder::class,
         ]);
     }
 }
