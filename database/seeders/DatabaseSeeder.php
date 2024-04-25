@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             EngineSeeder::class,
             ExhaustpipeSeeder::class,
             LightSeeder::class,
+            ContactInfoSeeder::class,
             // CarSeeder::class,
             // UserSeeder::class,
         ]);
