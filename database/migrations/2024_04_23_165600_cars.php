@@ -31,7 +31,7 @@ return new class extends Migration
             $table->unsignedBigInteger('light_id');
             $table->foreign('light_id')->references('id')->on('lights')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('spoiler_id');
-            $table->foreign('spoiler_id')->references('id')->on('spoiler')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('spoiler_id')->references('id')->on('spoilers')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('sideskirt_id');
             $table->foreign('sideskirt_id')->references('id')->on('sideskirts')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
