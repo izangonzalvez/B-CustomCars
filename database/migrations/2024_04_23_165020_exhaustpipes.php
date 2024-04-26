@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('exhaustpipe', function (Blueprint $table) {
+        Schema::create('exhaustpipes', function (Blueprint $table) {
             $table->id();
             $table->string('size',255);
             $table->float('price', 8, 2);

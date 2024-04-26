@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ChatAssistance', function (Blueprint $table) {
+        Schema::create('ChatAssistances', function (Blueprint $table) {
             $table->id();
             $table->string('name',255);
             $table->string('message',255);
