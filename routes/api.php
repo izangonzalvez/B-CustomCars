@@ -12,8 +12,7 @@ use App\Http\Controllers\SuspensionController;
 use App\Http\Controllers\SpoilerController;
 use App\Http\Controllers\SideskirtsController;
 use App\Http\Controllers\LightsController;
-// use App\Http\Controllers\ChatAssistanceController;
-// use App\Http\Controllers\ExhaustPipesController;
+use App\Http\Controllers\ChatAssistanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +35,7 @@ Route::apiResource('suspensions', SuspensionController::class);
 Route::apiResource('spoilers', SpoilerController::class);
 Route::apiResource('sideskirts', SideskirtsController::class);
 Route::apiResource('lights', LightsController::class);
-// Route::apiResource('chatassistance', ChatAssistanceController::class);
+Route::apiResource('chatassistances', ChatAssistanceController::class);
 Route::apiResource('brakes', BrakesController::class);
 Route::apiResource('engines', EnginesController::class);
 Route::apiResource('exhaustpipes', ExhaustPipesController::class);
