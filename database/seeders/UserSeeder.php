@@ -18,12 +18,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = new User([
+        $adminEmail = config('admin.email');
+        $adminData = [
             'name'      => config('admin.name'),
-            'email'     => config('admin.email'),
             'password'  => Hash::make(config('admin.password')),
             'role_id'   => Role::ADMIN
-        ]);
-        $admin->save();
+        ];
+
+        User::updateOrCreate(['email' => $adminEmail], $adminData);
     } 
 }
