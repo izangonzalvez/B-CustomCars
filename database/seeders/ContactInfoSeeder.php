@@ -13,12 +13,18 @@ class ContactInfoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('ContactsInfo')->insert([
+        DB::table('contact_infos')->insert([
             [
                 "address" => "ins joaquim mir",
                 "phone" => "123456789",
                 "email" => "prueba@prueba.com",
                 "message" => "Problema con los seeders",
+            ],
+            [
+                "address" => "can puig",
+                "phone" => "987654321",
+                "email" => "prueba1@prueba.com",
+                "message" => "Problema con los seeders persistente",
             ],
         ]);
     }
