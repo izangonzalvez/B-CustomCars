@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrakesController;
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\ContactInfoController;
 use App\Http\Controllers\EnginesController;
 use App\Http\Controllers\ExhaustPipesController;
 use App\Http\Controllers\WheelsController;
@@ -38,4 +39,4 @@ Route::apiResource('chatassistances', ChatAssistanceController::class);
 Route::apiResource('brakes', BrakesController::class);
 Route::apiResource('engines', EnginesController::class);
 Route::apiResource('exhaustpipes', ExhaustPipesController::class);
-// Route::apiResource('contact', ContactInfoController::class);
+Route::apiResource('contacts', ContactInfoController::class);
