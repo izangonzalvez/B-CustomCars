@@ -27,7 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger('brake_id');
             $table->foreign('brake_id')->references('id')->on('brakes')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('exhaustpipe_id');
-            $table->foreign('exhaustpipe_id')->references('id')->on('exhaustpipe')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('exhaustpipe_id')->references('id')->on('exhaustpipes')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('light_id');
             $table->foreign('light_id')->references('id')->on('lights')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('spoiler_id');

@@ -14,14 +14,14 @@ class Car extends Model
         'color',
         'horn',
         'user_id',
-        'wheels_id',
-        'engines_id',
-        'suspensions_id',
-        'brakes_id',
+        'wheel_id',
+        'engine_id',
+        'suspension_id',
+        'brake_id',
         'exhaustpipe_id',
-        'lights_id',
-        'spoilers_id',
-        'sideskirts_id',
+        'light_id',
+        'spoiler_id',
+        'sideskirt_id',
     ];
 
     public function user()

@@ -13,7 +13,10 @@ class ContactInfoController extends Controller
     public function index()
     {
         $contact = ContactInfo::all();
-        return response()->json($contact);
+        return response()->json([
+            "success" => true,
+            "data" => $contact,
+        ], 200);
     }
 
     // /**

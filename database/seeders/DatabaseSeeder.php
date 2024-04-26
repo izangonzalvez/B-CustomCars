@@ -32,8 +32,7 @@ class DatabaseSeeder extends Seeder
             ChatAssistanceSeeder::class,
 
             ContactInfoSeeder::class,
-            // CarSeeder::class,
-            // UserSeeder::class,
+            CarSeeder::class,
         ]);
     }
 }

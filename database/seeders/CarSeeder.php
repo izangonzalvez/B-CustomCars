@@ -30,6 +30,7 @@ class CarSeeder extends Seeder
                 'spoiler_id' => 1,
                 'sideskirt_id' => 1, 
             ],
+            
         ]);
     }
 }

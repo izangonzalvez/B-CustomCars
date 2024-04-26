@@ -35,13 +35,13 @@ class CarsController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'color' => 'required|string|max:255',
             'horn' => 'required|string|max:255',
             'user_id' => 'required|exists:users,id',
             'wheel_id' => 'required|exists:wheels,id',
-            'engine_id' => 'required|exists:engines,id',
+            'engine_id' => 'required|exists:engines,id', 
             'suspension_id' => 'required|exists:suspensions,id',
             'brake_id' => 'required|exists:brakes,id',
             'exhaustpipe_id' => 'required|exists:exhaustpipes,id',
@@ -50,45 +50,12 @@ class CarsController extends Controller
             'sideskirt_id' => 'required|exists:sideskirts,id',
         ]);
 
-        $name   = $request->get('name');
-        $color   = $request->get('color');
-        $horn   = $request->get('horn'); 
-        $userId = $request->input('user_id');
-        $wheel_id = $request->input('wheel_id');
-        $engine_id = $request->input('engine_id');
-        $suspension_id =$request->input('suspension_id');
-        $brake_id = $request->input('brake_id');
-        $exhaustpipe_id = $request->input('exhaustpipe_id');
-        $light_id = $request->input('light_id');
-        $spoiler_id = $request->input('spoiler_id');
-        $sideskirt_id = $request->input('sideskirt_id');
+        $cars = Car::create($request->all());
 
-        if($validatedData){
-            $car = Car::create([
-                'name' => $name,
-                'color' => $color,
-                'horn' => $horn,
-                'user_id' => $userId,
-                'wheel_id' => $wheel_id,
-                'engine_id' => $engine_id,
-                'suspension_id' => $suspension_id,
-                'brake_id' => $brake_id,
-                'exhaustpipe_id' => $exhaustpipe_id,
-                'light_id' => $light_id,
-                'spoiler_id' => $spoiler_id,
-                'sideskirt_id' => $sideskirt_id,
-            ]);
-
-            return response()->json([
-                'success' => true,
-                'data' => $car,
-            ], 200);
-        } else {
-            return response()->json([
-                'succes' => false,
-                'message' => 'Datos no encontrados',
-            ], 404);
-        }
+        return response()->json([
+            'success' => true,
+            'data' => $cars,
+        ], 200);
 
     }
 
@@ -124,6 +91,14 @@ class CarsController extends Controller
             'color' => 'required|string|max:255',
             'horn' => 'required|string|max:255',
             'user_id' => 'required|exists:users,id',
+            'wheel_id' => 'required|exists:wheels,id',
+            'engine_id' => 'required|exists:engines,id', 
+            'suspension_id' => 'required|exists:suspensions,id',
+            'brake_id' => 'required|exists:brakes,id',
+            'exhaustpipe_id' => 'required|exists:exhaustpipes,id',
+            'light_id' => 'required|exists:lights,id',
+            'spoiler_id' => 'required|exists:spoilers,id',
+            'sideskirt_id' => 'required|exists:sideskirts,id',
         ]);
 
         $car->update($request->all());

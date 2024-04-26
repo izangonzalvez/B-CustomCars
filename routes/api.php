@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::apiResource('cars', CarsController::class);
+Route::apiResource('cars', CarsController::class);
 Route::apiResource('wheels', WheelsController::class);
 Route::apiResource('suspensions', SuspensionController::class);
 Route::apiResource('spoilers', SpoilerController::class);
