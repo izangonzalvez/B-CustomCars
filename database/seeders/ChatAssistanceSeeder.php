@@ -14,7 +14,7 @@ class ChatAssistanceSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('ChatAssistances')->insert([
+        DB::table('chat_assistances')->insert([
             [
                 'name' => 'Problema',
                 'message' => 'Tengo un problema con Youtube',

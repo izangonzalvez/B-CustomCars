@@ -17,13 +17,8 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        $admin = new User([
-            'name'      => config('admin.name'),
-            'email'     => config('admin.email'),
-            'password'  => Hash::make(config('admin.password')),
-            'role_id'   => Role::ADMIN
-        ]);
-        $admin->save();
+    {$adminEmail = config('admin.email');$adminData = ['name'      => config('admin.name'),'password'  => Hash::make(config('admin.password')),'role_id'   => Role::ADMIN];
+
+        User::updateOrCreate(['email' => $adminEmail], $adminData);
     } 
 }

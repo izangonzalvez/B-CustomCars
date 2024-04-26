@@ -10,6 +10,7 @@ class ChatAssistance extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
         'message',
         'response',
         'user_id',
