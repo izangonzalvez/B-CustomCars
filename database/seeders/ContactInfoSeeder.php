@@ -13,7 +13,7 @@ class ContactInfoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('ContactInfo')->insert([
+        DB::table('ContactsInfo')->insert([
             [
                 "address" => "ins joaquim mir",
                 "phone" => "123456789",

@@ -13,7 +13,7 @@ class ExhaustpipeSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('exhaustpipe')->insert([
+        DB::table('exhaustpipes')->insert([
             [
                 'type' => 'donwpipe',
                 'price' => '450',
