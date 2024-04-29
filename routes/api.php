@@ -14,6 +14,8 @@ use App\Http\Controllers\SideskirtsController;
 use App\Http\Controllers\LightsController;
 use App\Http\Controllers\ChatAssistanceController;
 
+use App\Http\Controllers\Api\TokenController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,6 +30,12 @@ use App\Http\Controllers\ChatAssistanceController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('user', [TokenController::class, 'user'])->middleware('auth:sanctum');
+Route::post('register', [TokenController::class, 'register'])->middleware('guest');
+Route::post('login', [TokenController::class, 'login'])->middleware('guest');
+Route::post('logout', [TokenController::class, 'logout'])->middleware('auth:sanctum');
+
 
 Route::apiResource('cars', CarsController::class);
 Route::apiResource('wheels', WheelsController::class);
