@@ -39,6 +39,7 @@ class CarsController extends Controller
             'name' => 'required|string|max:255',
             'color' => 'required|string|max:255',
             'horn' => 'required|string|max:255',
+            'post' => 'required|boolean',
             'user_id' => 'required|exists:users,id',
             'wheel_id' => 'required|exists:wheels,id',
             'engine_id' => 'required|exists:engines,id', 

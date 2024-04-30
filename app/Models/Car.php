@@ -13,6 +13,7 @@ class Car extends Model
         'name',
         'color',
         'horn',
+        'post',
         'user_id',
         'wheel_id',
         'engine_id',

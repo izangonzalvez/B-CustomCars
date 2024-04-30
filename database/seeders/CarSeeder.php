@@ -20,6 +20,7 @@ class CarSeeder extends Seeder
                 'name' => 'Proyecto daily',
                 'color' => 'Negro',
                 'horn' => 'Sonido grabe',
+                'post' => FALSE,
                 'user_id' => 1,
                 'wheel_id' => 1, 
                 'engine_id' => 1, 

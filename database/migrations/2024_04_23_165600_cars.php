@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name',255);
             $table->string('color',255);
             $table->string('horn',255);
+            $table->boolean('post');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('wheel_id');
