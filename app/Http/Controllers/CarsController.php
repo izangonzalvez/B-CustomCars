@@ -18,7 +18,7 @@ class CarsController extends Controller
 
     public function index(Request $request)
     {
-        $cars = Car::all();
+        $cars = Car::with('wheel', 'engine','exhaustpipe','light','spoiler','suspension','sideskirt','brake')->get();
 
         return response()->json([
             "success" => true,

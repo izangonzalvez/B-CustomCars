@@ -14,16 +14,11 @@ class Wheel extends Model
         'type',
         'inch',
         'price',
-        'image',
     ];
 
-    public function user()
+    public function cars()
     {
-        return $this->belongsTo(User::class, 'author_id');
-    }
-    public function author()
-    {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Car::class);
     }
 
 }

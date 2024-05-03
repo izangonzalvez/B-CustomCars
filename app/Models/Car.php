@@ -27,11 +27,46 @@ class Car extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'author_id');
-    }
-    
-    public function author()
-    {
         return $this->belongsTo(User::class);
+    }
+
+    public function wheel()
+    {
+        return $this->belongsTo(Wheel::class);
+    }
+
+    public function engine()
+    {
+        return $this->belongsTo(Engine::class);
+    }
+
+    public function suspension()
+    {
+        return $this->belongsTo(Suspension::class);
+    }
+
+    public function brake()
+    {
+        return $this->belongsTo(Brake::class);
+    }
+
+    public function exhaustpipe()
+    {
+        return $this->belongsTo(ExhaustPipe::class);
+    }
+
+    public function light()
+    {
+        return $this->belongsTo(Light::class);
+    }
+
+    public function spoiler()
+    {
+        return $this->belongsTo(Spoiler::class);
+    }
+
+    public function sideskirt()
+    {
+        return $this->belongsTo(Sideskirt::class);
     }
 }
