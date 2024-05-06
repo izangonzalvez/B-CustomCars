@@ -66,16 +66,33 @@ class CarsController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function show(string $carID)
-    {
-        // return response()->json($car);
+    // public function show(string $carID)
+    // {
+    //     // return response()->json($car);
 
-        $car = Car::find($carID);
+    //     $car = Car::find($carID);
+    //     return response()->json([
+    //         'succes' => true,
+    //         'data' => $car,
+    //     ], 200);
+
+    // }
+
+    public function show($id)
+    {
+        $car = Car::with('wheel', 'engine', 'exhaustpipe', 'light', 'spoiler', 'suspension', 'sideskirt', 'brake')->find($id);
+        
+        if (!$car) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Car not found'
+            ], 404);
+        }
+
         return response()->json([
-            'succes' => true,
+            'success' => true,
             'data' => $car,
         ], 200);
-
     }
 
     /**
