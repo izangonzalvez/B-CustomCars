@@ -11,7 +11,10 @@ class SideskirtsController extends Controller
     public function index()
     {
         $sideskirts = Sideskirt::all();
-        return response()->json($sideskirts);
+        return response()->json([
+            "success" => true,
+            "data" => $sideskirts,
+        ], 200);
     }
 
     public function store(Request $request)
@@ -24,12 +27,18 @@ class SideskirtsController extends Controller
 
         $sideskirt = Sideskirt::create($request->all());
 
-        return response()->json($sideskirt, 201);
+        return response()->json([
+            "success" => true,
+            "data" => $sideskirt,
+        ], 200);
     }
 
     public function show(Sideskirt $sideskirt)
     {
-        return response()->json($sideskirt);
+        return response()->json([
+            "success" => true,
+            "data" => $sideskirt,
+        ], 200);
     }
 
 
@@ -43,7 +52,10 @@ class SideskirtsController extends Controller
 
         $sideskirt->update($request->all());
 
-        return response()->json($sideskirt, 200);
+        return response()->json([
+            "success" => true,
+            "data" => $sideskirt,
+        ], 200);
     }
 
 

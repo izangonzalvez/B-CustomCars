@@ -121,7 +121,10 @@ class CarsController extends Controller
 
         $car->update($request->all());
 
-        return response()->json($car, 200);
+        return response()->json([
+            "success" => true,
+            "data" => $car,
+        ], 200);
     }
 
     /**

@@ -11,7 +11,10 @@ class ChatAssistanceController extends Controller
     public function index()
     {
         $chatassistances = ChatAssistance::all();
-        return response()->json($chatassistances);
+        return response()->json([
+            "success" => true,
+            "data" => $chatassistances,
+        ], 200);
     }
 
     public function store(Request $request)
@@ -32,7 +35,10 @@ class ChatAssistanceController extends Controller
 
     public function show(ChatAssistance $chatassistance)
     {
-        return response()->json($chatassistance);
+        return response()->json([
+            "success" => true,
+            "data" => $chatassistance,
+        ], 200);
     }
 
 
@@ -46,7 +52,10 @@ class ChatAssistanceController extends Controller
 
         $chatassistance->update($request->all());
 
-        return response()->json($chatassistance, 200);
+        return response()->json([
+            "success" => true,
+            "data" => $chatassistance,
+        ], 200);
     }
 
 

@@ -10,7 +10,11 @@ class WheelsController extends Controller
     public function index()
     {
         $wheels = Wheel::all();
-        return response()->json($wheels);
+
+        return response()->json([
+            "success" => true,
+            "data" => $wheels,
+        ], 200);
     }
 
     public function store(Request $request)
@@ -29,7 +33,10 @@ class WheelsController extends Controller
 
     public function show(Wheel $wheel)
     {
-        return response()->json($wheel);
+        return response()->json([
+            "success" => true,
+            "data" => $wheel,
+        ], 200);
     }
 
 
@@ -44,7 +51,10 @@ class WheelsController extends Controller
 
         $wheel->update($request->all());
 
-        return response()->json($wheel, 200);
+        return response()->json([
+            "success" => true,
+            "data" => $wheel,
+        ], 200);
     }
 
 

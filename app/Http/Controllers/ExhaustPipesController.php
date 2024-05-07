@@ -11,7 +11,10 @@ class ExhaustPipesController extends Controller
     public function index()
     {
         $exhaustpipes = Exhaustpipe::all();
-        return response()->json($exhaustpipes);
+        return response()->json([
+            "success" => true,
+            "data" => $exhaustpipes,
+        ], 200);
     }
 
     public function store(Request $request)
@@ -24,7 +27,10 @@ class ExhaustPipesController extends Controller
 
         $exhaustpipe = Exhaustpipe::create($request->all());
 
-        return response()->json($exhaustpipe, 201);
+        return response()->json([
+            "success" => true,
+            "data" => $exhaustpipe,
+        ], 200);
     }
 
     public function show(Exhaustpipe $exhaustpipe)
@@ -43,7 +49,10 @@ class ExhaustPipesController extends Controller
 
         $exhaustpipe->update($request->all());
 
-        return response()->json($exhaustpipe, 200);
+        return response()->json([
+            "success" => true,
+            "data" => $exhaustpipe,
+        ], 200);
     }
 
 

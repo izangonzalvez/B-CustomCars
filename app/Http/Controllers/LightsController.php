@@ -11,7 +11,10 @@ class LightsController extends Controller
     public function index()
     {
         $lights = Light::all();
-        return response()->json($lights);
+        return response()->json([
+            "success" => true,
+            "data" => $lights,
+        ], 200);
     }
 
     public function store(Request $request)
@@ -25,12 +28,18 @@ class LightsController extends Controller
 
         $light = Light::create($request->all());
 
-        return response()->json($light, 201);
+        return response()->json([
+            "success" => true,
+            "data" => $light,
+        ], 200);
     }
 
     public function show(Light $light)
     {
-        return response()->json($light);
+        return response()->json([
+            "success" => true,
+            "data" => $light,
+        ], 200);
     }
 
 
@@ -45,7 +54,10 @@ class LightsController extends Controller
 
         $light->update($request->all());
 
-        return response()->json($light, 200);
+        return response()->json([
+            "success" => true,
+            "data" => $light,
+        ], 200);
     }
 
 

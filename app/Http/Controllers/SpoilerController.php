@@ -11,7 +11,10 @@ class SpoilerController extends Controller
     public function index()
     {
         $spoilers = Spoiler::all();
-        return response()->json($spoilers);
+        return response()->json([
+            "success" => true,
+            "data" => $spoilers,
+        ], 200);
     }
 
     public function store(Request $request)
@@ -25,12 +28,18 @@ class SpoilerController extends Controller
 
         $spoiler = Spoiler::create($request->all());
 
-        return response()->json($spoiler, 201);
+        return response()->json([
+            "success" => true,
+            "data" => $spoiler,
+        ], 200);
     }
 
     public function show(Spoiler $spoiler)
     {
-        return response()->json($spoiler);
+        return response()->json([
+            "success" => true,
+            "data" => $spoiler,
+        ], 200);
     }
 
 
@@ -45,7 +54,10 @@ class SpoilerController extends Controller
 
         $spoiler->update($request->all());
 
-        return response()->json($spoiler, 200);
+        return response()->json([
+            "success" => true,
+            "data" => $spoiler,
+        ], 200);
     }
 
 

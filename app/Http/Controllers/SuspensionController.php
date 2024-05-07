@@ -10,7 +10,10 @@ class SuspensionController extends Controller
     public function index()
     {
         $suspensions = Suspension::all();
-        return response()->json($suspensions);
+        return response()->json([
+            "success" => true,
+            "data" => $suspensions,
+        ], 200);
     }
 
     public function store(Request $request)
@@ -23,12 +26,18 @@ class SuspensionController extends Controller
 
         $suspension = Suspension::create($request->all());
 
-        return response()->json($suspension, 201);
+        return response()->json([
+            "success" => true,
+            "data" => $suspension,
+        ], 200);
     }
 
     public function show(Suspension $suspension)
     {
-        return response()->json($suspension);
+        return response()->json([
+            "success" => true,
+            "data" => $suspension,
+        ], 200);
     }
 
 
@@ -42,7 +51,10 @@ class SuspensionController extends Controller
 
         $suspension->update($request->all());
 
-        return response()->json($suspension, 200);
+        return response()->json([
+            "success" => true,
+            "data" => $suspension,
+        ], 200);
     }
 
 
