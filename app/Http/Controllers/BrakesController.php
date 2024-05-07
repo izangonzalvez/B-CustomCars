@@ -18,7 +18,7 @@ class BrakesController extends Controller
     {
         $brakes = Brake::all();
         return response()->json([
-            'succes' => true,
+            'success' => true,
             'data' => $brakes,
         ], 200);
     }

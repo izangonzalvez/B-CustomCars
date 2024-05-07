@@ -18,7 +18,7 @@ class EnginesController extends Controller
     {
         $engine = Engine::all();
         return response()->json([
-            'succes' => true,
+            'success' => true,
             'data' => $engine,
         ], 200);
     }
