@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proveedor;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProveedorController extends Controller
 {
@@ -13,19 +16,12 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        //
+        $proveedor = Proveedor::all();
+        return response()->json([
+            'success' => true,
+            'data' => $proveedor,
+        ], 200);
     }
-
-    /**
-     * Muestra el formulario para crear un nuevo proveedor.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Almacena un nuevo proveedor en la base de datos.
      *
@@ -34,7 +30,22 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Valida los datos del formulario
+        $request->validate([
+            'email' => 'required|email|unique:proveedors,email', 
+        ]);
+
+        // Crea un nuevo proveedor
+        $proveedor = Proveedor::create([
+            'email' => $request->email,
+        ]);
+
+        // Retorna una respuesta JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'Proveedor creado exitosamente.',
+            'data' => $proveedor,
+        ], 201);
     }
 
     /**
@@ -43,20 +54,12 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( Proveedor $proveedor)
     {
-        //
-    }
-
-    /**
-     * Muestra el formulario para editar el proveedor especificado.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json([
+            'succes' => true,
+            'data' => $proveedor,
+        ], 200);
     }
 
     /**
@@ -68,7 +71,21 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $proveedor = Proveedor::find($id);
+
+        $request->validate([
+            'email' => 'required|email|unique:proveedors,email,' . $proveedor->id, 
+        ]);
+
+        $proveedor->email = $request->email;
+        $proveedor->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Proveedor actualizado exitosamente.',
+            'data' => $proveedor,
+        ], 200);
     }
 
     /**
@@ -77,8 +94,13 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Proveedor $proveedor)
     {
-        //
+        $proveedor->delete();
+
+        return response()->json([
+            'succes' => true,
+            'data' => $proveedor,
+        ], 200);
     }
 }
