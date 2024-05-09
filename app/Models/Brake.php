@@ -24,4 +24,9 @@ class Brake extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class);
+    }
 }

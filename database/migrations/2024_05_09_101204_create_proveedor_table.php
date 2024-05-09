@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lights', function (Blueprint $table) {
+        Schema::create('proveedors', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->string('type',255);
-            $table->float('price', 8, 2);
-            $table->string('color',255);
-            $table->foreignId('proveedor_id')->constrained();
+            $table->string('email'); 
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ligths');
+        Schema::dropIfExists('proveedors');
     }
 };

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('size',255);
             $table->string('material',255);
             $table->float('price', 8,2);
+            $table->foreignId('proveedor_id')->constrained();
             $table->timestamps();
         });
     }

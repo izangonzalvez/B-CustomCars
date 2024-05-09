@@ -21,4 +21,9 @@ class Wheel extends Model
         return $this->hasMany(Car::class);
     }
 
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class);
+    }
+
 }

@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             ExhaustpipeSeeder::class,
             LightSeeder::class,
             ChatAssistanceSeeder::class,
-
+            ProveedorSeeder::class,
             ContactInfoSeeder::class,
             CarSeeder::class,
         ]);
