@@ -48,3 +48,4 @@ Route::apiResource('brakes', BrakesController::class);
 Route::apiResource('engines', EnginesController::class);
 Route::apiResource('exhaustpipes', ExhaustPipesController::class);
 Route::apiResource('contacts', ContactInfoController::class);
+Route::put('cars/{car}/publish', [CarsController::class, 'publish']);

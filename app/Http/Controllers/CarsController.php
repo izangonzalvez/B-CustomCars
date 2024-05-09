@@ -120,6 +120,7 @@ class CarsController extends Controller
             'light_id' => 'required|exists:lights,id',
             'spoiler_id' => 'required|exists:spoilers,id',
             'sideskirt_id' => 'required|exists:sideskirts,id',
+            'post' => 'required|boolean',
         ]);
 
         $car->update($request->all());
@@ -143,4 +144,19 @@ class CarsController extends Controller
 
         return response()->json(null, 204);
     }
-}
+
+    public function publish(Request $request, Car $car)
+    {
+        $request->validate([
+            'post' => 'required|boolean',
+        ]);
+
+        $car->update(['post' => $request->post]);
+
+        return response()->json([
+            "success" => true,
+            "data" => $car,
+        ], 200);
+    }
+
+    }
