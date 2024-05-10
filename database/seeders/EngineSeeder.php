@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Proveedor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,8 @@ class EngineSeeder extends Seeder
      */
     public function run(): void
     {
+
+        $proveedor = Proveedor::firstOrCreate(['email' => 'andres@example.com']);
         DB::table('engines')->insert([
             [
                 'name' => 'Turbocharged Boxer-4',
@@ -20,6 +23,7 @@ class EngineSeeder extends Seeder
                 'revolutions' => '6000',
                 'price' => '4000',
                 'fuel' => 'gasoline',
+                'proveedor_id' => $proveedor->id,
             ],
             [
                 'name' => 'Twin-Turbo Inline-6',
@@ -27,6 +31,7 @@ class EngineSeeder extends Seeder
                 'revolutions' => '7000',
                 'price' => '4000',
                 'fuel' => 'gasoline',
+                'proveedor_id' => $proveedor->id,
             ],
             [
                 'name' => 'V ocho',
@@ -34,6 +39,7 @@ class EngineSeeder extends Seeder
                 'revolutions' => '7500',
                 'price' => '4000',
                 'fuel' => 'gasoline',
+                'proveedor_id' => $proveedor->id,
             ],
             [
                 'name' => 'V ocho',
@@ -41,6 +47,7 @@ class EngineSeeder extends Seeder
                 'revolutions' => '6000',
                 'price' => '4000',
                 'fuel' => 'gasoline',
+                'proveedor_id' => $proveedor->id,
             ],
         ]);
     }

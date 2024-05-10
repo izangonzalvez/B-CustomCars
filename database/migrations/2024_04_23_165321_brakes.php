@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('style',255);
             $table->string('model',255);
             $table->float('price', 8, 2);
+            $table->foreignId('proveedor_id')->constrained();
             $table->timestamps();
         });
     }

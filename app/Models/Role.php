@@ -12,7 +12,7 @@ class Role extends Model
     const ADMIN = 1;
     const CUSTOMER = 2;
     const AUTHOR =3;
-    const PROVEIDOR = 4;
+    const PROVEEDOR = 4;
 
     protected $fillable = [
         'id',

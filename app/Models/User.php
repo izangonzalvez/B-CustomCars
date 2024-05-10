@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public function isProveidor()
     {
-        return $this->role_id == Role::PROVEIDOR;
+        return $this->role_id == Role::PROVEEDOR;
     }
 
 

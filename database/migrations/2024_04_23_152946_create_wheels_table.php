@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('type', 255);
             $table->integer('inch');
             $table->integer('price');
+            $table->foreignId('proveedor_id')->constrained();
             $table->timestamps();
         });
     }

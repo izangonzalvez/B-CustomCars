@@ -15,6 +15,7 @@ use App\Http\Controllers\LightsController;
 use App\Http\Controllers\ChatAssistanceController;
 
 use App\Http\Controllers\Api\TokenController;
+use App\Http\Controllers\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,5 @@ Route::apiResource('brakes', BrakesController::class);
 Route::apiResource('engines', EnginesController::class);
 Route::apiResource('exhaustpipes', ExhaustPipesController::class);
 Route::apiResource('contacts', ContactInfoController::class);
+Route::apiResource('proveedor', ProveedorController::class);
 Route::put('cars/{car}/publish', [CarsController::class, 'publish']);
