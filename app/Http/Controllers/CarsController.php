@@ -105,31 +105,40 @@ class CarsController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Car $car)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'color' => 'required|string|max:255',
-            'horn' => 'required|string|max:255',
-            'user_id' => 'required|exists:users,id',
-            'wheel_id' => 'required|exists:wheels,id',
-            'engine_id' => 'required|exists:engines,id', 
-            'suspension_id' => 'required|exists:suspensions,id',
-            'brake_id' => 'required|exists:brakes,id',
-            'exhaustpipe_id' => 'required|exists:exhaustpipes,id',
-            'light_id' => 'required|exists:lights,id',
-            'spoiler_id' => 'required|exists:spoilers,id',
-            'sideskirt_id' => 'required|exists:sideskirts,id',
-            'post' => 'required|boolean',
-        ]);
+    /**
+ * Update the specified resource in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @param  \App\Models\Car  $car
+ * @return \Illuminate\Http\Response
+ */
+public function update(Request $request, Car $car)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'color' => 'required|string|max:255',
+        'horn' => 'required|string|max:255',
+        'user_id' => 'required|exists:users,id',
+    ]);
 
-        $car->update($request->all());
+    $carData = $request->only(['name', 'color', 'horn', 'user_id']);
+    $carData['wheel_id'] = $request->input('wheel');
+    $carData['engine_id'] = $request->input('engine');
+    $carData['suspension_id'] = $request->input('suspension');
+    $carData['brake_id'] = $request->input('brake');
+    $carData['exhaustpipe_id'] = $request->input('exhaustpipe');
+    $carData['light_id'] = $request->input('light');
+    $carData['spoiler_id'] = $request->input('spoiler');
+    $carData['sideskirt_id'] = $request->input('sideskirt');
 
-        return response()->json([
-            "success" => true,
-            "data" => $car,
-        ], 200);
-    }
+    $car->update($carData);
+
+    return response()->json([
+        "success" => true,
+        "data" => $car,
+    ], 200);
+}
+
 
     /**
     * Remove the specified resource from storage.
