@@ -25,33 +25,33 @@ class ProveedorController extends Controller
     }
 
 
-    public function loginProveedor(Request $request){
+    public function loginProveedor(Request $request)
+    {
         $credentials = $request->validate([
-            'email'     => 'required|email',
-            'password'  => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
-        if (Auth::attempt($credentials)) {
-            // Get user
-            $proveedor = Proveedor::where([
-                ["email", "=", $credentials["email"]]
-            ])->firstOrFail();
-            // Revoke all old tokens
-            $proveedor->tokens()->delete();
-            // Generate new token
-            $token = $proveedor->createToken("authToken")->plainTextToken;
-            // Token response
+
+        $proveedor = Proveedor::where('email', $credentials['email'])->first();
+
+        if (!$proveedor || !Hash::check($credentials['password'], $proveedor->password)) {
             return response()->json([
-                "success"   => true,
-                "authToken" => $token,
-                "tokenType" => "Bearer"
-            ], 200);
-        } else {
-            return response()->json([
-                "success" => false,
-                "message" => "Invalid login credentials"
+                'success' => false,
+                'message' => 'Invalid login credentials'
             ], 401);
         }
- 
+
+        // Clear existing tokens
+        $proveedor->tokens()->delete();
+
+        // Generate new token
+        $token = $proveedor->createToken('authToken')->plainTextToken;
+
+        return response()->json([
+            'success' => true,
+            'authToken' => $token,
+            'tokenType' => 'Bearer'
+        ], 200);
     }
 
     /**
@@ -62,31 +62,36 @@ class ProveedorController extends Controller
      */
     public function registerProveedor(Request $request)
     {
-        // Valida los datos del formulario
+        // Validar los datos del formulario
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255', 
-            'password' => 'required|string|min:4',
+            'email' => 'required|string|max:255|email|unique:proveedors,email',
+            'password' => 'required|string|min:8',
         ]);
 
-        // Crea un nuevo proveedor
-        $proveedor = Proveedor::create([
+        // Crear un nuevo proveedor
+        $proveedor = new Proveedor([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
+        $proveedor->save();
 
-        $token = $proveedor->createToken('api_token')->plainTextToken;
+        // Generar un token de acceso para el proveedor
+        $token = $proveedor->createToken('authToken')->plainTextToken;
 
-        // Retorna una respuesta JSON
+        // Retornar una respuesta JSON con el token
         return response()->json([
             'success' => true,
-            'message' => 'Proveedor creado exitosamente.',
             'authToken' => $token,
             'tokenType' => 'Bearer',
             'data' => $proveedor,
         ], 201);
     }
+
+
+    
+
 
     public function logout(Request $request)
     {
