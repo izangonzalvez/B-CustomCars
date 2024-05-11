@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Car;
+use App\Models\User;
 use Symfony\Component\Console\Input\Input;
 
 class CarsController extends Controller
@@ -26,6 +27,16 @@ class CarsController extends Controller
         ], 200);
     }
 
+    public function listProjectsByUser ($email){
+        $user = User::where('email', $email)->get();
+        $projects = Car::where('user_id', $user[0]->id)->with('wheel', 'engine','exhaustpipe','light','spoiler','suspension','sideskirt','brake')->get();
+
+        return response()->json([
+            "success" => true,
+            "data" => $projects,
+        ], 200);
+    }
+
     /**
     * Store a newly created resource in storage.
     *
@@ -40,12 +51,15 @@ class CarsController extends Controller
             'color' => 'required|string|max:255',
             'horn' => 'required|string|max:255',
             'post' => 'required|boolean',
-            'user_id' => 'required|exists:users,id',
             // No necesitas validar las piezas por nombre, ya que las IDs se asignarán en el frontend
         ]);
 
+        $email = $request->input('email');
+
+        $user = User::where('email', $email)->get();
+
         // Mapea las piezas de los coches a sus IDs
-        $carData = $request->only(['name', 'color', 'horn', 'post', 'user_id']);
+        $carData = $request->only(['name', 'color', 'horn', 'post']);
         $carData['wheel_id'] = $request->input('wheel');
         $carData['engine_id'] = $request->input('engine');
         $carData['suspension_id'] = $request->input('suspension');
@@ -54,6 +68,7 @@ class CarsController extends Controller
         $carData['light_id'] = $request->input('light');
         $carData['spoiler_id'] = $request->input('spoiler');
         $carData['sideskirt_id'] = $request->input('sideskirt');
+        $carData['user_id'] = $user[0]->id;
 
         $car = Car::create($carData);
 
