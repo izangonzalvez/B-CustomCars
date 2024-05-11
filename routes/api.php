@@ -50,5 +50,9 @@ Route::apiResource('engines', EnginesController::class);
 Route::apiResource('exhaustpipes', ExhaustPipesController::class);
 Route::apiResource('contacts', ContactInfoController::class);
 Route::apiResource('proveedors', ProveedorController::class);
+
 Route::put('cars/{car}/publish', [CarsController::class, 'publish']);
 Route::get('cars/projects/{email}', [CarsController::class, 'listProjectsByUser']);
+
+Route::post('proveedorsRegister', [ProveedorController::class, 'registerProveedor']);
+Route::post('proveedorsLogin', [ProveedorController::class, 'loginProveedor']);
