@@ -15,25 +15,24 @@ class SuspensionSeeder extends Seeder
      */
     public function run(): void
     {
-        $proveedor = Proveedor::firstOrCreate(['email' => 'andres@example.com']);
         DB::table('suspensions')->insert([
             [
                 'name' => 'Oscilante',
                 'price' => '40',
                 'type' => 'rigida',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'name' => 'McPherson',
                 'price' => '50',
                 'type' => 'independiente',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Multilink',
                 'price' => '55',
                 'type' => 'neumatica',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ]
         ]);
     }

@@ -14,37 +14,36 @@ class ExhaustpipeSeeder extends Seeder
      */
     public function run(): void
     {
-        $proveedor = Proveedor::firstOrCreate(['email' => 'andres@example.com']);
         DB::table('exhaustpipes')->insert([
             [
                 'type' => 'donwpipe',
                 'price' => '450',
                 'size' => '1.50',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'type' => 'intermedio',
                 'price' => '120',
                 'size' => '1.50',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'type' => 'final con colas',
                 'price' => '500',
                 'size' => '1.20',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'type' => 'mariposas',
                 'price' => '250',
                 'size' => '0.50',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'type' => 'todo',
                 'price' => '1900',
                 'size' => '4.00',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
         ]);
     }

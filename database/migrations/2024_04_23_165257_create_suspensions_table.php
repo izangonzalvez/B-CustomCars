@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name', 255);
             $table->integer('price');
             $table->string('type', 255);
-            $table->foreignId('proveedor_id')->constrained();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

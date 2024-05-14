@@ -15,28 +15,27 @@ class SpoilerSeeder extends Seeder
      */
     public function run(): void
     {
-        $proveedor = Proveedor::firstOrCreate(['email' => 'andres@example.com']);
         DB::table('spoilers')->insert([
             [
                 'type' => 'ducktail',
                 'price' => '40',
                 'size' => '50',
                 'material' => 'carbono',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'type' => 'labio',
                 'price' => '40',
                 'size' => '40',
                 'material' => 'carbono',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'type' => 'ala',
                 'price' => '60',
                 'size' => '55',
                 'material' => 'carbono',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ]
         ]);
     }

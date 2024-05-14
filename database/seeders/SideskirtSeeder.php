@@ -15,25 +15,25 @@ class SideskirtSeeder extends Seeder
      */
     public function run(): void
     {
-        $proveedor = Proveedor::firstOrCreate(['email' => 'andres@example.com']);
+
         DB::table('sideskirts')->insert([
             [
                 'size' => '90',
                 'material' => 'carbono',
                 'price' => '50',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'size' => '75',
                 'material' => 'carbono',
                 'price' => '60',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ],
             [
                 'size' => '85',
                 'material' => 'carbono',
                 'price' => '89',
-                'proveedor_id' => $proveedor->id,
+                'user_id' => 1,
             ]
         ]);
     }

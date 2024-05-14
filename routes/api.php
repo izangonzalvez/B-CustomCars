@@ -15,7 +15,7 @@ use App\Http\Controllers\LightsController;
 use App\Http\Controllers\ChatAssistanceController;
 
 use App\Http\Controllers\Api\TokenController;
-use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\Api\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,5 +54,6 @@ Route::apiResource('proveedors', ProveedorController::class);
 Route::put('cars/{car}/publish', [CarsController::class, 'publish']);
 Route::get('cars/projects/{email}', [CarsController::class, 'listProjectsByUser']);
 
-Route::post('proveedorsRegister', [ProveedorController::class, 'registerProveedor']);
-Route::post('proveedorsLogin', [ProveedorController::class, 'loginProveedor']);
+Route::get('userProv', [ProveedorController::class, 'userProv'])->middleware('auth:sanctum');
+Route::post('registerProv', [ProveedorController::class, 'registerProv'])->middleware('guest');
+Route::post('logoutProv', [ProveedorController::class, 'logoutProv'])->middleware('auth:sanctum');
