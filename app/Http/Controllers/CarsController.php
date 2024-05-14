@@ -51,14 +51,12 @@ class CarsController extends Controller
             'color' => 'required|string|max:255',
             'horn' => 'required|string|max:255',
             'post' => 'required|boolean',
-            // No necesitas validar las piezas por nombre, ya que las IDs se asignarán en el frontend
         ]);
 
         $email = $request->input('email');
 
         $user = User::where('email', $email)->get();
 
-        // Mapea las piezas de los coches a sus IDs
         $carData = $request->only(['name', 'color', 'horn', 'post']);
         $carData['wheel_id'] = $request->input('wheel');
         $carData['engine_id'] = $request->input('engine');
@@ -133,10 +131,12 @@ public function update(Request $request, Car $car)
         'name' => 'required|string|max:255',
         'color' => 'required|string|max:255',
         'horn' => 'required|string|max:255',
-        'user_id' => 'required|exists:users,id',
     ]);
+    $email = $request->input('email');
 
-    $carData = $request->only(['name', 'color', 'horn', 'user_id']);
+    $user = User::where('email', $email)->get();
+
+    $carData = $request->only(['name', 'color', 'horn']);
     $carData['wheel_id'] = $request->input('wheel');
     $carData['engine_id'] = $request->input('engine');
     $carData['suspension_id'] = $request->input('suspension');
@@ -145,6 +145,7 @@ public function update(Request $request, Car $car)
     $carData['light_id'] = $request->input('light');
     $carData['spoiler_id'] = $request->input('spoiler');
     $carData['sideskirt_id'] = $request->input('sideskirt');
+    $carData['user_id'] = $user[0]->id;
 
     $car->update($carData);
 
