@@ -55,7 +55,7 @@ class CarsController extends Controller
 
         $email = $request->input('email');
 
-        $user = User::where('email', $email)->get();
+        $user = User::where('email', $email)->first();
 
         $carData = $request->only(['name', 'color', 'horn', 'post']);
         $carData['wheel_id'] = $request->input('wheel');
@@ -67,6 +67,19 @@ class CarsController extends Controller
         $carData['spoiler_id'] = $request->input('spoiler');
         $carData['sideskirt_id'] = $request->input('sideskirt');
         $carData['user_id'] = $user[0]->id;
+
+        $user = auth()->user();
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Usuario no encontrado'
+            ], 404);
+        }
+    
+        $carData = $request->only(['name', 'color', 'horn', 'post']);
+    
+        $carData['user_id'] = $user->id;
 
         $car = Car::create($carData);
 

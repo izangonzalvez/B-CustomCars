@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brake;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BrakesController extends Controller
 {
@@ -32,20 +34,39 @@ class BrakesController extends Controller
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'name' => 'required|string|max:255',
             'style' => 'required|string|max:255',
             'model' => 'required|string|max:255',
             'price' => 'required|integer',
         ]);
-
-       $brake = Brake::create($request->all());
-
-        return response()->json([
-            'succes' => true,
-            'data' => $brake,
-        ], 200);
         
+        $user = User::get()->first();
+    
+        // dd($user);
+        if ($user) {
+            
+            $brake = Brake::create([
+                'name' => $request->name,
+                'style' => $request->style,
+                'model' => $request->model,
+                'price' => $request->price,
+                'user_id' => $user->id,
+            ]);
+            
+            return response()->json([
+                'succes' => true,
+                'data' => $brake,
+            ], 200);
+
+        } else {
+
+            return response()->json([
+                'succes' => false,
+                'message' => 'Usuario no encontrado',
+            ], 404);
+        }
     }
 
     public function show(Brake $brake)
