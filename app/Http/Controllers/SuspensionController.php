@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Suspension;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SuspensionController extends Controller
@@ -24,12 +25,31 @@ class SuspensionController extends Controller
             'type' => 'required|string|max:255',
         ]);
 
-        $suspension = Suspension::create($request->all());
+        $user = User::get()->first();
 
-        return response()->json([
-            "success" => true,
-            "data" => $suspension,
-        ], 200);
+        if ($user) {
+
+            $suspension = Suspension::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'type' => $request->type,
+                'user_id' => $user->id
+            ]);
+
+            return response()->json([
+                "success" => true,
+                "data" => $suspension,
+            ], 200);
+            
+        } else {
+
+            return response()->json([
+                'succes' => false,
+                'message' => 'Usuario no encontrado',
+            ], 404);
+
+        }
+        
     }
 
     public function show(Suspension $suspension)

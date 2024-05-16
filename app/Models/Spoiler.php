@@ -14,6 +14,7 @@ class Spoiler extends Model
         'price',
         'size',
         'material',
+        'user_id',
  
     ];
 
@@ -28,6 +29,6 @@ class Spoiler extends Model
 
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

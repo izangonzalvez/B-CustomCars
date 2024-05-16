@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Engine;
+use App\Models\User;
 
 class EnginesController extends Controller
 {
@@ -39,13 +40,31 @@ class EnginesController extends Controller
             'price' => 'required|integer',
             'fuel' => 'required|string|max:255',
         ]);
+        $user = User::get()->first();
+        
+        if ($user) {
 
-       $engine = Engine::create($request->all());
+            $engine = Engine::create([
+                'name' => $request->name,
+                'power' => $request->power,
+                'revolutions' => $request->revolutions,
+                'price' => $request->price,
+                'fuel' => $request->fuel,
+                'user_id' => $user->id
 
-        return response()->json([
-            'succes' => true,
-            'data' => $engine,
-        ], 200);
+            ]);
+
+            return response()->json([
+                'succes' => true,
+                'data' => $engine,
+            ], 200);
+
+        } else {
+            return response()->json([
+                'succes' => false,
+                'message' => 'Usuario no encontrado',
+            ], 404);
+        }
         
     }
 

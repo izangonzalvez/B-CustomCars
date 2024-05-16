@@ -14,6 +14,7 @@ class Light extends Model
         'type',
         'price',
         'color',
+        'user_id',
     ];
 
     public function user()
@@ -27,6 +28,6 @@ class Light extends Model
 
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

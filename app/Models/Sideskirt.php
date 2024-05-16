@@ -13,6 +13,7 @@ class Sideskirt extends Model
         'size',
         'material',
         'price',
+        'user_id',
     ];
 
     public function user()
@@ -25,6 +26,6 @@ class Sideskirt extends Model
     }
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

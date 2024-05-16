@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Light;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LightsController extends Controller
@@ -25,13 +26,31 @@ class LightsController extends Controller
             'price' => 'required|integer',
             'color' => 'required|string|max:255',
         ]);
+        $user = User::get()->first();
 
-        $light = Light::create($request->all());
+        if ($user) {
+            
+            $light = Light::create([
+                'name' => $request->name,
+                'type' => $request->type,
+                'price' => $request->price,
+                'color' => $request->color,
+                'user_id' => $user->id
+            ]);
 
-        return response()->json([
-            "success" => true,
-            "data" => $light,
-        ], 200);
+            return response()->json([
+                "success" => true,
+                "data" => $light,
+            ], 200);
+
+        } else {
+            
+            return response()->json([
+                'succes' => false,
+                'message' => 'Usuario no encontrado',
+            ], 404);
+        }
+
     }
 
     public function show(Light $light)

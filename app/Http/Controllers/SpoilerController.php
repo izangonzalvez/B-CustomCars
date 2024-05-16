@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Spoiler;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SpoilerController extends Controller
@@ -26,12 +27,32 @@ class SpoilerController extends Controller
             'material' => 'required|string|max:255',
         ]);
 
-        $spoiler = Spoiler::create($request->all());
+        $user = User::get()->first();
+        
+        if ($user) {
 
-        return response()->json([
-            "success" => true,
-            "data" => $spoiler,
-        ], 200);
+            $spoiler = Spoiler::create([
+                'type' => $request->type,
+                'price' => $request->price,
+                'size' => $request->size,
+                'material' => $request->material,
+                'user_id' => $user->id,
+            ]);
+
+            return response()->json([
+                "success" => true,
+                "data" => $spoiler,
+            ], 200);
+
+        } else {
+
+            return response()->json([
+                'succes' => false,
+                'message' => 'Usuario no encontrado',
+            ], 404);
+
+        }
+        
     }
 
     public function show(Spoiler $spoiler)
