@@ -15,6 +15,7 @@ class Engine extends Model
         'revolutions',
         'price',
         'fuel',
+        'user_id',
     ];
 
     public function user()
@@ -27,6 +28,6 @@ class Engine extends Model
     }
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

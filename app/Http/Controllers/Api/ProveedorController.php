@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class ProveedorController extends Controller
 {
     public function userProv(){
-        $user = User::all();
+        $user = User::where('role_id', 4)->get();
         return json_encode([
             "success" => "true",
             "data" => $user

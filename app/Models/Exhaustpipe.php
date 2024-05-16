@@ -13,6 +13,7 @@ class Exhaustpipe extends Model
         'size',
         'price',
         'type',
+        'user_id',
     ];
 
     public function user()
@@ -26,6 +27,6 @@ class Exhaustpipe extends Model
 
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

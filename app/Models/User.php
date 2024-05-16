@@ -64,5 +64,39 @@ class User extends Authenticatable
         return $this->role_id == Role::PROVEEDOR;
     }
 
+    
+    public function brake()
+    {
+        return $this->hasMany(Brake::class);
+    }
+    public function engine()
+    {
+        return $this->hasMany(Engine::class);
+    }
+
+    public function light()
+    {
+        return $this->hasMany(Light::class);
+    }
+
+    public function sideskirt()
+    {
+        return $this->hasMany(Sideskirt::class);
+    }
+
+    public function spoiler()
+    {
+        return $this->hasMany(Spoiler::class);
+    }
+
+    public function suspension()
+    {
+        return $this->hasMany(Suspension::class);
+    }
+
+    public function wheel()
+    {
+        return $this->hasMany(Wheel::class);
+    }
 
 }

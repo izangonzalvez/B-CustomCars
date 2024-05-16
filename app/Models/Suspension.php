@@ -13,6 +13,7 @@ class Suspension extends Model
         'name',
         'price',
         'type',
+        'user_id',
     ]; 
 
     public function user()
@@ -26,6 +27,6 @@ class Suspension extends Model
 
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

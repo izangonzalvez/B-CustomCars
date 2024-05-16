@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sideskirt;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SideskirtsController extends Controller
@@ -25,12 +26,31 @@ class SideskirtsController extends Controller
             'price' => 'required|integer',
         ]);
 
-        $sideskirt = Sideskirt::create($request->all());
+        $user = User::get()->first();
 
-        return response()->json([
-            "success" => true,
-            "data" => $sideskirt,
-        ], 200);
+        if ($user) {
+
+            $sideskirt = Sideskirt::create([
+                'size' => $request->size,
+                'material' => $request->material,
+                'price' => $request->price,
+                'user_id' => $user->id,
+            ]);
+
+            return response()->json([
+                "success" => true,
+                "data" => $sideskirt,
+            ], 200);
+
+        } else {
+
+            return response()->json([
+                'succes' => false,
+                'message' => 'Usuario no encontrado',
+            ], 404);
+
+        }
+        
     }
 
     public function show(Sideskirt $sideskirt)

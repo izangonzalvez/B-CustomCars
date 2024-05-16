@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Wheel;
 use Illuminate\Http\Request;
 
@@ -25,10 +26,28 @@ class WheelsController extends Controller
             'inch' => 'required|integer',
             'price' => 'required|integer',
         ]);
+        $user = User::get()->first();
 
-        $wheel = Wheel::create($request->all());
+        if ($user) {
 
-        return response()->json($wheel, 201);
+            $wheel = Wheel::create([
+                'name' => $request->name,
+                'type' => $request->type,
+                'inch' => $request->inch,
+                'price' => $request->price,
+                'user_id' => $user->id
+            ]);
+
+            return response()->json([
+                'succes' => true,
+                'data' => $wheel,
+            ], 200);
+        } else {
+            return response()->json([
+                'succes' => false,
+                'message' => 'Usuario no encontrado',
+            ], 404);
+        }
     }
 
     public function show(Wheel $wheel)

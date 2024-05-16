@@ -14,6 +14,7 @@ class Brake extends Model
         'style',
         'model',
         'price',
+        'user_id',
     ];
 
     public function user()
@@ -27,6 +28,6 @@ class Brake extends Model
 
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

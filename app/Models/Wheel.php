@@ -22,9 +22,9 @@ class Wheel extends Model
         return $this->hasMany(Car::class);
     }
 
-    public function user()
+    public function proveedor()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }
