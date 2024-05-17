@@ -28,9 +28,9 @@ class ChatAssistanceSeeder extends Seeder
                 'user_id' => 1,
             ],
             [
-                'name' => 'Audio',
-                'message' => 'El audio me va mal',
-                'response' => 'instala controladores',
+                'name' => '3D',
+                'message' => 'No carga el modelo 3D',
+                'response' => 'Espera a que carge ya que es un modelo pesado',
                 'user_id' => 1,
             ],
         ]);
